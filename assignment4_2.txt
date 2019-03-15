@@ -1,0 +1,98 @@
+1. Write a program to create barplots for all the categorical columns in mtcars.
+    Ans:
+      >attach(mtcars)
+
+      >str(mtcars)
+      >mtcars$cyl<-as.factor(mtcars$cyl)
+      >mtcars$vs<-as.factor(mtcars$vs)
+      >mtcars$am<-as.factor(mtcars$am)
+      >mtcars$gear<-as.factor(mtcars$gear)
+      >mtcars$carb<-as.factor(mtcars$carb)
+
+       >barplot (table(mtcars$cyl),
+                 main = "Car Distribution",
+                 xlab = "Number of Cylinders",
+                 col = c("darkblue", "green", "red"),
+                 names.arg = c("4 Cylinder", "6 Cylinder", "8 Cylinder")
+                 )
+
+
+       >barplot (table(mtcars$vs),
+                 main = "Car vs",
+                 xlab = "shape of engine",
+                 col = c("darkblue", "green"),
+                 names.arg = c("vshape", "straight line")
+                )
+
+
+       >barplot (table(mtcars$am),
+                 main = "Car transmission",
+                 xlab = "car type",
+                 col = c( "green", "red"),
+                 names.arg = c("0 automatic", "1 gear")
+                 )
+
+
+       >barplot (table(mtcars$gear),
+                 main = "Car gears",
+                 xlab = "number of gears",
+                 col = c( "blue","green", "red"),
+                 names.arg = c("3 gear", "4 gear","5 gear")
+                 )
+
+        >barplot(table(mtcars$carb),
+                 main="cars and carb",
+                 xlab="Number of carburetors",
+                 ylab="count",
+                 border="red",
+                 col="blue",
+                 density=10
+                 )       mpg+cyl+disp+hp+drat+wt+qsec+vs+am+carb
+
+2. Create a scatterplot matrix by gear types in mtcars dataset.
+    Ans:
+      >pairs(carb~gear,data = mtcars,
+              main = "Scatterplot Matrix")
+
+     >pairs(mpg~gear,data = mtcars,
+            main = "Scatterplot Matrix")
+  
+     >pairs(cyl~gear,data = mtcars,
+            main = "Scatterplot Matrix")
+
+     >pairs(disp~gear,data = mtcars,
+            main = "Scatterplot Matrix")
+
+     >pairs(hp~gear,data = mtcars,
+            main = "Scatterplot Matrix") 
+    
+     >pairs(drat~gear,data = mtcars,
+            main = "Scatterplot Matrix")
+      
+     >pairs(wt~gear,data = mtcars,
+            main = "Scatterplot Matrix")
+
+     >pairs(mpg~qsec,data = mtcars,
+            main = "Scatterplot Matrix")
+
+     >pairs(vs~gear,data = mtcars,
+            main = "Scatterplot Matrix") 
+
+     >pairs(am~gear,data = mtcars,
+            main = "Scatterplot Matrix")
+3. Write a program to create a plot density by class variable.
+    Ans:
+      >tempMtcars<-mtcars
+
+      >tempMtcars$mpgClass[tempMtcars$mpg <= 25] = "low"
+      >tempMtcars$mpgClass[tempMtcars$mpg > 25] = "high"
+      >tempMtcars$mpgClass
+
+      >tempMtcars$mpgClass<-as.numeric(as.factor(tempMtcars$mpgClass))
+      >str(tempMtcars)
+
+      >d <- density(tempMtcars$mpgClass)
+      >plot(d, main="Kernel Density of class variable")
+      >polygon(d, col="red", border="blue")
+
+
